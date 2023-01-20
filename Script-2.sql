@@ -1,0 +1,67 @@
+--SELECT 실습 문제
+--1.사원정보 테이블에서 사원번호,이름,급여,업무,입사일,상사의 사원번호를 출력
+SELECT EMPLOYEE_ID, FIRST_NAME, SALARY,JOB_ID , HIRE_DATE ,MANAGER_ID 
+FROM EMPLOYEES;
+
+--2. 사원정보 테이블에서 사원의 이름, 성, 급여와 영봉에 $100 보너스를 추가하여 계산한 값은
+--Increased Ann_Salary,급여에 $100 보너스를 추가하여 계산한 연봉은 Increased Salary
+
+SELECT FIRST_NAME , LAST_NAME , SALARY, SALARY*12, (SALARY * 12) + 100 AS "Increased Ann_Salary"
+, (SALARY + 100) AS "Increased Salary"
+FROM EMPLOYEES;
+
+--3.예산 편성 문제로 급여 정보 보고서를 작성하려고 한다. 
+-- 사원정보 테이블에서 급여가 7000~10000 범위인 사람의 이름과 성 및 급여를 급여가 적은 순서대로 출력
+--1.첫번째 방법
+SELECT LAST_NAME , SALARY 
+FROM EMPLOYEES
+WHERE SALARY < 7000 OR SALARY > 10000
+ORDER BY SALARY ASC;
+--2.두번째 방법
+SELECT LAST_NAME ,SALARY 
+FROM EMPLOYEES
+WHERE SALARY NOT BETWEEN 7000 AND 10000;
+
+--4. 사원의 성 중에 'e' 및 'o' 글자가 포함된 사원을 출력
+SELECT * 
+FROM EMPLOYEES
+WHERE LAST_NAME LIKE '%e%' AND LAST_NAME LIKE '%o%';
+
+--5. 급여와 수당율에 대한 보고서를 작성하려고 한다
+-- 수당을 받는 모든 사원의 이름, 성,급여,업무,수당율을 출력하세요
+-- 이때, 급여가 큰 순서대로 출력하되 급여가 같으면 수당율이 큰 순서대로 출력
+SELECT LAST_NAME, FIRST_NAME , SALARY , JOB_ID ,COMMISSION_PCT 
+FROM EMPLOYEES
+WHERE COMMISSION_PCT IS NOT NULL
+ORDER BY SALARY DESC ,
+COMMISSION_PCT DESC ;
+
+
+SELECT * FROM DEPARTMENTS
+WHERE DEPARTMENT_ID = 20;
+
+SELECT * FROM LOCATIONS
+WHERE LOCATION_ID = 1000;
+
+SELECT * 
+FROM LOCATIONS
+WHERE STREET_ADDRESS LIKE '%ab%';
+
+SELECT EMPLOYEE_ID , LAST_NAME , FIRST_NAME ,JOB_ID , DEPARTMENT_ID FROM EMPLOYEES ORDER BY HIRE_DATE DESC;
+
+SELECT * FROM EMPLOYEES  WHERE EMPLOYEE_ID = 100;
+
+SELECT *
+FROM EMPLOYEES 
+WHERE LAST_NAME LIKE '%a%';
+
+---100번 부서에 근무하는 사람들의 평균 급여와,
+--그 부서에 급여가 제일 많이 받는 금액, 제일 적은 금액
+
+SELECT AVG(SALARY),MAX(SALARY),MIN(SALARY)  
+FROM EMPLOYEES WHERE DEPARTMENT_ID = 100;
+
+SELECT * FROM EMPLOYEES;
+
+
+
