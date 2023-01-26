@@ -1,0 +1,20 @@
+--Table 생성
+
+-- 이름, 전화번호, 이메일, 나이 
+CREATE TABLE TEST (
+	NAME VARCHAR2(20),
+	PHONE_NUMBER VARCHAR2(20),
+	EMAIL VARCHAR2(20),
+	AGE NUMBER(10)
+);
+
+SELECT * FROM TEST;
+DROP TABLE TEST;
+
+INSERT INTO TEST 
+	VALUES ('최미리','010-111-1111','miri6507@naver.com',20);
+
+
+INSERT INTO TEST 
+	VALUES('안녕','010-222-2222', 'dfjlkd@naver.com',30);
+	

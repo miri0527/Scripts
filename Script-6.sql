@@ -1,0 +1,23 @@
+----------Table 생성-------------
+CREATE TABLE TEST (
+	--NUM NUMBER(전체자릿수,소숫점자릿수)
+	NAME VARCHAR2(100),
+	--VARCHAR -> 고정 길이 일때 ex)주민번호 일때 많이 쓰임
+	NUM NUMBER,
+	KOR NUMBER(3),
+	AV NUMBER(5,2)
+	--전체 자리 수
+);
+
+SELECT * FROM TEST;
+
+INSERT INTO TEST 
+	VALUES('최미리',2,80,50.3);
+
+INSERT INTO TEST(NAME,NUM,KOR,AV) 
+	VALUES('안녕',1,70,47.23);
+	
+UPDATE TEST SET NUM = 2 WHERE NAME='안녕';
+
+ROLLBACK;
+DROP TABLE TEST;
